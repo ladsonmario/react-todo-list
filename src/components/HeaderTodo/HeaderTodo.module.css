@@ -1,0 +1,23 @@
+.headerTodo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+    padding-bottom: 20px;
+    padding-top: 10px;
+    border-bottom: 1px dotted #0078AA;
+}
+
+.headerTodo h1 {
+    font-size: 25px;
+}
+
+.headerTodo button {
+    background-color: #0078AA;
+    font-size: 15px;
+    text-transform: uppercase;
+    border-radius: 5px;  
+    border: 0;
+    padding: 10px 7px;  
+    font-weight: bold;   
+    color: #F6F6F6;
+}
