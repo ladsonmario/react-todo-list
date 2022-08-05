@@ -22,7 +22,9 @@ export const AddTodo = ({ onAdd }: Props) => {
         onAdd(inputTitle, texteareaDesc);
         setInputTitle('');
         setTexteareaDesc('');
-      }      
+      } else {
+        alert('Empty title or description!');
+      }    
     }
 
     return (

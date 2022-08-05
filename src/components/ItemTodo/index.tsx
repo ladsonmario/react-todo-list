@@ -7,17 +7,21 @@ type Props = {
 }
 
 export const ItemTodo = ({ data, onDelete }: Props) => {
+    const handleDeleteClick = (id: string) => {
+        onDelete(id);
+    }
+
     return (
         <div className={styles.list}>
             {data.map((item, index) => (
                 <ul>
                     <li key={index}>
                         <div>
-                            <h3>{item.title} <small>{item.date.toString()}</small></h3>
-                            <button>DELETE</button>
-                        </div>
-                        
-                        <p>{item.description}</p>                        
+                            <small>{item.date.toString()}</small>
+                            <button onClick={() => handleDeleteClick(item.id)}>DELETE</button>
+                        </div>                        
+                        <h3>{item.title}</h3>   
+                        <p>{item.description}</p>                       
                     </li>
                 </ul>
             ))}
