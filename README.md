@@ -14,4 +14,4 @@ Para estilização foi usada a técnica CSS Modules.
 - `npm run dev`
 
 ## Para testar
-O projeto foi hospedado na Vercel. Para testar: [Clique aqui]().
+O projeto foi hospedado na Vercel. Para testar: [Clique aqui](https://react-todo-list-seven-zeta.vercel.app/).
