@@ -1,5 +1,5 @@
 # To-do List
-
+Este projeto foi feito para praticar o hook useReducer() do React, através dele foi possível criar uma lista de tarefas que possui 3 ações: <strong>adicionar tarefa, deletar e ordenar por data</strong>. Para melhoria do projeto foi adicionado a função <strong>LocalStorage</strong> que armazena as tarefas criadas para que elas não sumam quando a página for atualizada.
 
 
 ## Estilização
