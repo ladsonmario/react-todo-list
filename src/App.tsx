@@ -1,11 +1,17 @@
 import { HeaderTodo } from './components/HeaderTodo';
 import { AddTodo } from './components/AddTodo';
 import { ItemTodo } from './components/ItemTodo';
+import { Footer } from './components/Footer';
 import styles from './App.module.css';
 import { useTodoList } from './reducers/todo';
+import { useEffect } from 'react';
 
 function App() {  
   const [todoList, dispatch] = useTodoList(); 
+
+  useEffect(() => {
+    window.localStorage.setItem('saved', JSON.stringify(todoList));    
+  }, [todoList]);
 
   const addTodo = (title: string, description: string) => {
     dispatch({
@@ -31,6 +37,7 @@ function App() {
         <HeaderTodo onOrder={orderTodo} />
         <AddTodo onAdd={addTodo} />
         <ItemTodo data={todoList} onDelete={deleteTodo} />
+        <Footer />
       </div>
     </div>
   )

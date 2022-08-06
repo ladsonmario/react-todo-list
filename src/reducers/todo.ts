@@ -1,6 +1,5 @@
 import { useReducer } from 'react';
 import { v4 } from 'uuid';
-import { writeLocalStore } from '../storage/LocalStore';
 
 export type todoItems = {    
     id: string;
@@ -30,23 +29,20 @@ const reducer = (state: todoItems[], action: ActionType) => {
                     date: new Date(), 
                     title: action.payload?.title, 
                     description: action.payload?.description 
-                });                
-                writeLocalStore(copyState);
+                });                                
                 return copyState;
             }
         break;
         case 'DEL':
             if(action.payload?.id) {
                 let copyState = [...state];
-                copyState = copyState.filter(item => item.id !== action.payload?.id);                                
-                writeLocalStore(copyState);
+                copyState = copyState.filter(item => item.id !== action.payload?.id);                                                
                 return copyState;
             }
         break;
         case 'ORDER': 
             let copyState = [...state];
-            copyState = copyState.sort((a, b) => (a.date > b.date) ? -1 : 1);                       
-            writeLocalStore(copyState);
+            copyState = copyState.sort((a, b) => (a.date > b.date) ? -1 : 1);                                   
             return copyState;
         break;        
     }
@@ -55,5 +51,9 @@ const reducer = (state: todoItems[], action: ActionType) => {
 }
 
 export const useTodoList = () => {
-    return useReducer(reducer, initialState);
+    return useReducer(
+        reducer, 
+        initialState,        
+        (initialValue: todoItems[]) => JSON.parse(localStorage.getItem('saved') as string) || initialValue
+    );
 }
