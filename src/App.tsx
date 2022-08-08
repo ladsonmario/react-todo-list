@@ -1,16 +1,17 @@
+import styles from './App.module.css';
+import { useEffect } from 'react';
 import { HeaderTodo } from './components/HeaderTodo';
 import { AddTodo } from './components/AddTodo';
 import { ItemTodo } from './components/ItemTodo';
 import { Footer } from './components/Footer';
-import styles from './App.module.css';
 import { useTodoList } from './reducers/todo';
-import { useEffect } from 'react';
+import { writeLocalStorage } from './localStorage/storage';
 
 function App() {  
   const [todoList, dispatch] = useTodoList(); 
 
   useEffect(() => {
-    window.localStorage.setItem('saved', JSON.stringify(todoList));    
+    writeLocalStorage(todoList);
   }, [todoList]);
 
   const addTodo = (title: string, description: string) => {

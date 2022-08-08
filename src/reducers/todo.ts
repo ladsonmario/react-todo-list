@@ -1,5 +1,6 @@
 import { useReducer } from 'react';
 import { v4 } from 'uuid';
+import { readLocalStorage } from '../localStorage/storage';
 
 export type todoItems = {    
     id: string;
@@ -54,6 +55,6 @@ export const useTodoList = () => {
     return useReducer(
         reducer, 
         initialState,        
-        (initialValue: todoItems[]) => JSON.parse(localStorage.getItem('saved') as string) || initialValue
+        readLocalStorage
     );
 }
